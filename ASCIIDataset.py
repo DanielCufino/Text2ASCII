@@ -28,6 +28,7 @@ class ASCIIDataset(Dataset):
         
         print("Tokenizing Text...")
         self.X_encoded = tokenizer(self.X, truncation=True, padding="max_length", return_tensors="pt")
+        self.X_encoded = self.X_encoded.to(device)
         print("Done Tokenizing.")
         self.input_ids = self.X_encoded['input_ids']
         self.attention_mask = self.X_encoded['attention_mask']
